@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Starship: From Prototype to Orbit, and the Moon and Mars Beyond | Kita</title>
+<meta name="description" content="An inspiring web presentation about SpaceX's Starship: how it works, its test-flight history up to the first orbital flight in Sept. 2026, official timelines, the businesses built on it, and the vision for the Moon and Mars.">
+<meta name="theme-color" content="#04050B">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304050B'/%3E%3Cpath d='M32 6c8 8 9 18 9 26v18H23V32c0-8 1-18 9-26z' fill='%23C9D1DC'/%3E%3Cpath d='M26 50h12l-6 10z' fill='%23FF7A1A'/%3E%3C/svg%3E">
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<header class="topbar">
+  <div class="brand"><span class="logo">K</span><span>Kita · Starship</span></div>
+  <span class="section" id="section">Intro</span>
+  <div class="tools">
+    <button type="button" class="tbtn" id="notes-btn" aria-pressed="false" title="Speaker notes (N)">📝 <span class="lbl">Notes</span></button>
+    <button type="button" class="tbtn" id="pres-btn" title="Presenter view (P)">🖥 <span class="lbl">Presenter</span></button>
+    <button type="button" class="tbtn" id="fs-btn" title="Fullscreen (F)">⛶ <span class="lbl">Fullscreen</span></button>
+  </div>
+</header>
+
+<main class="deck" id="deck" tabindex="-1" aria-live="polite">
+
+<section class="slide has-hero" id="title" data-section="Intro">
+  <div class="hero"><img src="assets/photos/ift5-liftoff.jpg" alt="" aria-hidden="true"></div>
+  <div class="title-wrap">
+    <p class="kicker anim">The story of the biggest rocket ever built</p>
+    <h1 class="anim"><span class="grad">Starship</span><span class="sub">From a steel “water tower” to orbit, and the Moon and Mars beyond</span></h1>
+    <div class="stripe anim"></div>
+    <p class="hook anim">On Sept. 28, 2026, a 124-metre stainless-steel rocket reached orbit for the first time and released 26 next-generation Starlink satellites.</p>
+    <p class="lead anim">How did SpaceX get here in about seven years? What does it take to fly a rocket again and again, which businesses are waiting for it, and what comes next?</p>
+    <div class="agenda anim"><span class="tag f">Why it matters</span><span class="tag">How it works</span><span class="tag">Timeline 2019–2026</span><span class="tag b">What's next</span><span class="tag">Businesses</span><span class="tag g">Moon &amp; Mars</span></div>
+    <p class="hint anim">Use → / ← or Space, click the arrows, or swipe. F = fullscreen · N = notes · P = presenter view</p>
+  </div>
+  <span class="hero-credit">Starship Flight 5 liftoff, Oct. 13, 2024 · Photo: Steve Jurvetson · CC BY 2.0 · Wikimedia Commons</span>
+  <aside class="notes"><ul><li>Hook: ask the room, "Has a rocket ever been caught by a tower?" (Yes, in Oct. 2024. Wait for slide 7.)</li><li>Today: why Starship matters, how it works, its test history, the official timelines, the businesses built on it, and the vision.</li><li>Real photos and videos are labeled. Concept images are clearly marked as concepts, not real events.</li><li>Facts checked on Oct. 10, 2026. Sources are on the last slide.</li></ul></aside>
+</section>
+<section class="slide" id="why" data-section="Why it matters">
+  <p class="kicker">Why Starship matters</p>
+  <h2>Throw-away rockets → <span class="fire">airliner-style rockets</span></h2>
+  <div class="two">
+    <div>
+      <ul class="pts">
+        <li class="anim"><b>Full reuse:</b> both stages are designed to come back. The booster is caught by the launch tower, and the ship is meant to be caught too [1][12].</li>
+        <li class="anim"><b>Rapid reuse:</b> the goal is to refly <i>without refurbishment</i>. SpaceX's filing even talks about reflights in under an hour [1][12].</li>
+        <li class="anim"><b>Huge capacity:</b> Starship V3 is designed to carry <b>100+ metric tons</b> to orbit while fully reusable, and future versions aim for about 200 t [1][12].</li>
+        <li class="anim"><b>Cheaper space:</b> SpaceX says Starship aims to cut the cost of reaching orbit by <b>99% or more</b> compared with the historical average [12].</li>
+      </ul>
+      <div class="callout anim">💡 Think of an airliner: if you threw away a jet after every flight, tickets would cost millions. Rockets have mostly worked that way.</div>
+    </div>
+    <div class="chart anim" role="img" aria-label="Bar chart of launch cost per kilogram to orbit: historical average 18,500 dollars, Falcon 9 2,700, Falcon Heavy 1,400, and Starship's aim of at most about 185 dollars">
+      <h3>Launch cost per kilogram to orbit (US$)</h3>
+      <div class="hbars">
+        <div class="hrow"><span class="lab">Historical average<small>pre-SpaceX</small></span><div class="htrack"><div class="hb" style="--w:100%">$18,500</div></div></div>
+        <div class="hrow"><span class="lab">Falcon 9<small>first version, 2010</small></span><div class="htrack"><div class="hb f9" style="--w:14.6%">$2,700</div></div></div>
+        <div class="hrow"><span class="lab">Falcon Heavy<small>first version, 2018</small></span><div class="htrack"><div class="hb fh" style="--w:7.6%">$1,400</div></div></div>
+        <div class="hrow"><span class="lab fire">Starship goal<small>“99% or more” lower</small></span><div class="htrack"><div class="hb ss" style="--w:1%">&nbsp;</div><span class="goal">≤ ~$185 (a goal, not yet reached)</span></div></div>
+      </div>
+      <p class="src">Figures from SpaceX's 2026 SEC filing, which cites NASA [12]. The Starship bar is our own math: 1% of $18,500. It is a target, not a price.</p>
+    </div>
+  </div>
+  <aside class="notes"><ul><li>The key idea is reuse. Falcon 9 already reuses its first stage; Starship tries to reuse <i>everything</i>.</li><li>The chart: the bars for historical, Falcon 9, and Falcon Heavy are SpaceX-cited NASA figures. The Starship bar is an <b>aim</b> ("99% or more" cheaper), not a measured price.</li><li>Question: what would you do if launching 1 kg cost the same as a plane ticket?</li></ul></aside>
+</section>
+<section class="slide" id="anatomy" data-section="How it works">
+  <p class="kicker">The vehicle explained</p>
+  <h2>Two stages, 39 engines, one giant <span class="fire">steel</span> rocket</h2>
+  <div class="anat2">
+    <svg viewBox="0 0 1200 330" role="img" aria-label="Labelled diagram of Starship lying on its side: the Super Heavy booster on the left and the Ship upper stage on the right">
+      <defs><linearGradient id="st" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef1f5"/><stop offset=".45" stop-color="#c1c8d2"/><stop offset="1" stop-color="#454b56"/></linearGradient><radialGradient id="fl" cx="1" cy=".5" r="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".4" stop-color="#ffb347"/><stop offset="1" stop-color="#ff5a1f" stop-opacity="0"/></radialGradient></defs>
+      <path d="M70 140 Q20 165 70 190Z" fill="url(#fl)"/>
+      <rect x="70" y="125" width="570" height="80" fill="url(#st)"/>
+      <rect x="600" y="113" width="26" height="12" fill="#555c69"/><rect x="600" y="205" width="26" height="12" fill="#555c69"/>
+      <rect x="640" y="125" width="20" height="80" fill="#3a404c"/><rect x="644" y="129" width="12" height="5" fill="#151820"/><rect x="644" y="138" width="12" height="5" fill="#151820"/><rect x="644" y="147" width="12" height="5" fill="#151820"/><rect x="644" y="156" width="12" height="5" fill="#151820"/><rect x="644" y="165" width="12" height="5" fill="#151820"/><rect x="644" y="174" width="12" height="5" fill="#151820"/><rect x="644" y="183" width="12" height="5" fill="#151820"/><rect x="644" y="192" width="12" height="5" fill="#151820"/>
+      <path d="M660 125 L1060 125 Q1150 130 1158 165 Q1150 200 1060 205 L660 205Z" fill="url(#st)"/>
+      <path d="M660 165 L1158 165 Q1150 200 1060 205 L660 205Z" fill="#111" opacity=".78"/>
+      <path d="M690 125 l8 -22 64 0 8 22Z M690 205 l8 22 64 0 8 -22Z" fill="#2a2e38"/>
+      <path d="M1010 125 l6 -16 46 0 6 16Z M1010 205 l6 16 46 0 6 -16Z" fill="#2a2e38"/>
+      <line x1="70" y1="262" x2="1158" y2="262" stroke="#5c6480" stroke-dasharray="4 6"/><line x1="70" y1="252" x2="70" y2="272" stroke="#5c6480"/><line x1="1158" y1="252" x2="1158" y2="272" stroke="#5c6480"/>
+      <text x="614" y="292" text-anchor="middle" class="h">124 m tall · 9 m wide</text>
+      <g class="lbls">
+        <g><line x1="350" y1="125" x2="350" y2="70" stroke="#FF7A1A"/><text x="350" y="40" text-anchor="middle" class="h">SUPER HEAVY BOOSTER</text><text x="350" y="62" text-anchor="middle">72 m · 33 Raptors · 8,240 tf</text></g>
+        <g><line x1="612" y1="113" x2="612" y2="90" stroke="#9FD4FF"/><text x="575" y="84" text-anchor="end">grid fins ↴</text></g>
+        <g><line x1="650" y1="205" x2="650" y2="240" stroke="#F2C14E"/><text x="650" y="320" text-anchor="middle" class="h" style="fill:#F2C14E"></text><text x="640" y="245" text-anchor="end" style="fill:#F2C14E">hot-staging ring</text></g>
+        <g><line x1="880" y1="125" x2="880" y2="70" stroke="#FF7A1A"/><text x="890" y="40" text-anchor="middle" class="h">SHIP (UPPER STAGE)</text><text x="890" y="62" text-anchor="middle">52 m · 3 sea-level + 3 vacuum Raptors</text></g>
+        <g><line x1="1100" y1="205" x2="1100" y2="228" stroke="#9FD4FF"/><text x="1158" y="245" text-anchor="end" style="fill:#9FD4FF">heat-shield tiles (dark side)</text></g>
+      </g>
+    </svg>
+    <div class="cards c4">
+      <div class="card anim"><div class="num">124<small>m</small></div><div class="lbl">Full stack height</div><p>Roughly a 40-storey building; 9 m wide [1].</p></div>
+      <div class="card anim"><div class="num">39</div><div class="lbl">Raptor engines</div><p>33 on the booster and 6 on the ship [1][12].</p></div>
+      <div class="card b anim"><div class="num">5,250<small>t</small></div><div class="lbl">Propellant, both stages</div><p>3,650 t booster + 1,600 t ship of liquid methane and liquid oxygen [1].</p></div>
+      <div class="card g anim"><div class="num">100+<small>t</small></div><div class="lbl">To orbit, fully reusable</div><p>The design goal for V3 [1][12].</p></div>
+    </div>
+    <p class="src">Official specs from SpaceX's Starship page [1] and SEC filing [12]. Drawn roughly to scale and simplified for teaching.</p>
+  </div>
+  <aside class="notes"><ul><li>Walk left to right: booster engines, grid fins, hot-staging ring, ship, heat-shield tiles.</li><li>SpaceX's page lists Raptor at 250 tf and the booster at 8,240 tf (18.1 million lbf) [1].</li><li>Sum of propellant: 3,650 + 1,600 = 5,250 t (our addition of the two official numbers).</li></ul></aside>
+</section>
+<section class="slide" id="tech" data-section="How it works">
+  <div class="two img">
+    <div>
+      <p class="kicker">Inside the engineering</p>
+      <h2>Methalox, full-flow &amp; stainless steel</h2>
+      <ul class="pts">
+        <li class="anim"><b>Raptor</b> burns <b>liquid methane + liquid oxygen</b> (“methalox”) in a <b>full-flow staged combustion</b> cycle: <i>all</i> the fuel and <i>all</i> the oxygen pass through turbines before reaching the combustion chamber. That is very efficient but very hard to build [12][27].</li>
+        <li class="anim"><b>Why methane?</b> It burns clean (little soot “coking”), and it can be made on Mars from CO₂ and water ice with the <b>Sabatier reaction</b> [27].</li>
+        <li class="anim"><b>Raptor 3</b> (V3) removes heat shields and simplifies plumbing. SpaceX says that saves nearly a ton per engine [12].</li>
+        <li class="anim"><b>Stainless steel</b> instead of carbon fiber: cheap, strong when super-cold, and tough in heat. It started as 301 steel, then 304L, then SpaceX's own <b>30X</b> alloy [27].</li>
+      </ul>
+    </div>
+    <figure class="photo wide anim"><span class="real-badge">Real photo</span><img src="assets/photos/ship39-megabay.jpg" alt="Starship Ship 39, the first V3 upper stage, standing inside Mega Bay 2 at Starbase" loading="lazy"><figcaption>Ship 39, the first V3 ship, in Mega Bay 2, Jan. 12, 2026. It flew on Flight 12 · Photo: Petty Officer 1st Class Alexander Kubitza · Public domain · Wikimedia Commons</figcaption></figure>
+  </div>
+  <aside class="notes"><ul><li>Full-flow simply means no propellant is wasted to drive the pumps. Earlier engines dumped some.</li><li>The photo is a US government (public domain) image from a Jan. 2026 visit. Note the black tiles on one side and the shiny steel on the other.</li><li>Next slide: a deep-dive video for anyone who loves engines.</li></ul></aside>
+</section>
+<section class="slide" id="raptor-video" data-section="How it works">
+  <div class="two vid">
+    <div>
+      <p class="kicker b">Technical explainer · video</p>
+      <h2>How Raptor works</h2>
+      <p class="lead anim">Everyday Astronaut (Tim Dodd) explains engine cycles, full-flow staged combustion, and why Raptor was such a leap.</p>
+      <ul class="pts">
+        <li class="anim">Try it in class: play the first chapters on engine cycles, then pause.</li>
+        <li class="anim">Ask: what is the advantage of burning <i>all</i> the propellant in the main chamber?</li>
+      </ul>
+      <p class="src">The video is from 2019, so its Raptor numbers are older than V3. Use the slide-3 specs for today's figures.</p>
+    </div>
+    <figure class="video vwrap anim"><div class="vframe" style="background-image:url('https://i.ytimg.com/vi/LbH1ZDImaI8/hqdefault.jpg')"><iframe data-src="https://www.youtube-nocookie.com/embed/LbH1ZDImaI8?rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;modestbranding=1" title="Is SpaceX&#x27;s Raptor engine the king of rocket engines? (Everyday Astronaut)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption><span>🎬 <b>Is SpaceX&#x27;s Raptor engine the king of rocket engines?</b> · Everyday Astronaut [V2]</span><a class="ytlink" href="https://www.youtube.com/watch?v=LbH1ZDImaI8" target="_blank" rel="noopener">▶ Watch on YouTube</a></figcaption></figure>
+  </div>
+  <aside class="notes"><ul><li>The video is 49 minutes. Choose a segment ahead of time.</li><li>Its numbers describe early Raptor 1 and 2 engines; V3 uses Raptor 3.</li></ul></aside>
+</section>
+<section class="slide" id="tricks" data-section="How it works">
+  <p class="kicker">Four big ideas</p>
+  <h2>The tricks that make Starship different</h2>
+  <div class="cards c4">
+    <div class="card anim"><div class="ico">🔥</div><h3>Hot staging</h3><p>The ship lights its engines <b>while still attached</b>, pushing off a vented ring on top of the booster. First done on Flight 2, Nov. 18, 2023 [25].</p></div>
+    <div class="card b anim"><div class="ico">🛡️</div><h3>Heat-shield tiles</h3><p>Hexagonal ceramic tiles protect the ship's windward side through re-entry, similar in idea to the Space Shuttle's. V3 uses an improved tile design [27].</p></div>
+    <div class="card g anim"><div class="ico">🦾</div><h3>Mechazilla catch</h3><p>No landing legs: the tower's “chopsticks” arms catch the returning booster mid-air, ready to be inspected and reflown [12].</p></div>
+    <div class="card gr anim"><div class="ico">⛽</div><h3>Orbital refilling</h3><p>Tanker Starships refill a ship in orbit so it can reach the Moon or Mars. SpaceX's 2024 estimate: about <b>10 tanker launches</b> per lunar landing, “with error bars” [1][30].</p></div>
+  </div>
+  <div class="callout anim">🧪 Refilling has never been done between two spacecraft with super-cold propellant at this scale. Flight 3 (Mar. 2024) moved liquid oxygen between two tanks <i>inside one ship</i>, and NASA called that test “successful by all accounts” [30].</div>
+  <aside class="notes"><ul><li>Hot staging: to make it work, SpaceX added a vented ring on top of the booster.</li><li>Tiles: tests have removed tiles on purpose to see how the steel copes.</li><li>Refilling is the single most important unproven step for the Moon. We will see it in the timelines.</li></ul></aside>
+</section>
+<section class="slide" id="catch" data-section="How it works">
+  <div class="two vid">
+    <div>
+      <p class="kicker">Oct. 13, 2024 · Flight 5</p>
+      <h2>The day a tower <span class="fire">caught a rocket</span></h2>
+      <div class="pair">
+        <figure class="photo tall anim"><span class="real-badge">Real photo</span><img src="assets/photos/booster-approach.jpg" alt="Super Heavy booster descending toward the launch tower with engines firing" loading="lazy"><figcaption>Final approach · Photo: Steve Jurvetson · CC BY 2.0 · Wikimedia Commons</figcaption></figure>
+        <figure class="photo tall anim"><span class="real-badge">Real photo</span><img src="assets/photos/booster-catch.jpg" alt="Super Heavy booster held by the tower arms after being caught" loading="lazy"><figcaption>Caught by the chopsticks · Photo: Steve Jurvetson · CC BY 2.0 · Wikimedia Commons</figcaption></figure>
+      </div>
+      <p class="src">Flight 5 was the first booster catch. Boosters were caught again on Flights 7 and 8 (2025), and Flight 9 flew the first reused booster [25].</p>
+    </div>
+    <figure class="video vwrap anim"><div class="vframe" style="background-image:url('https://i.ytimg.com/vi/hI9HQfCAw64/hqdefault.jpg')"><iframe data-src="https://www.youtube-nocookie.com/embed/hI9HQfCAw64?rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;modestbranding=1" title="Starship&#x27;s Fifth Flight Test (SpaceX)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption><span>🎬 <b>Starship&#x27;s Fifth Flight Test</b> · SpaceX [V1]</span><a class="ytlink" href="https://www.youtube.com/watch?v=hI9HQfCAw64" target="_blank" rel="noopener">▶ Watch on YouTube</a></figcaption></figure>
+  </div>
+  <aside class="notes"><ul><li>The official SpaceX recap is 3.5 minutes long, so play all of it.</li><li>The booster is roughly 72 m tall and came back from the edge of space [1].</li><li>The photos are by venture capitalist and photographer Steve Jurvetson (CC BY 2.0).</li></ul></aside>
+</section>
+<section class="slide" id="prototypes" data-section="Timeline">
+  <p class="kicker b">Development timeline · part 1</p>
+  <h2>Hop, flop and land: the prototypes (2019–2021)</h2>
+  <div class="two">
+    <div class="timeline" style="grid-template-columns:repeat(4,1fr)">
+      <div class="tl b anim"><div class="when">Jul–Aug 2019</div><p><b>Starhopper</b> makes two hops, the second (Aug. 27) to about 150 m [26].</p></div>
+      <div class="tl anim"><div class="when">Dec 9, 2020</div><p><b>SN8</b> climbs to about 12.5 km, does a “belly-flop”, then crashes on landing because of low fuel-tank pressure [26][27].</p></div>
+      <div class="tl anim"><div class="when">Feb–Mar 2021</div><p><b>SN9, SN10, SN11</b> are all lost on or near landing. Each failure teaches something [27].</p></div>
+      <div class="tl g anim"><div class="when">May 5, 2021</div><p><b>SN15</b> flies to about 10 km and makes the first <b>soft landing</b> [26].</p></div>
+    </div>
+    <div class="pair">
+      <figure class="photo tall anim"><span class="real-badge">Real photo</span><img src="assets/photos/starhopper.jpg" alt="Starhopper, a short stainless-steel test vehicle on three legs" loading="lazy"><figcaption>Starhopper, Mar. 2019 · Photo: Nomadd (NSF forum) · CC BY-SA 4.0 · Wikimedia Commons</figcaption></figure>
+      <figure class="photo tall anim"><span class="real-badge">Real photo</span><img src="assets/photos/sn8-launch.jpg" alt="Starship SN8 climbing on a plume of exhaust, seen from South Padre Island" loading="lazy"><figcaption>SN8 launch, Dec. 9, 2020 · Photo: Forest Katsch · CC BY-SA 4.0 · Wikimedia Commons</figcaption></figure>
+    </div>
+  </div>
+  <div class="callout anim">🔁 <b>Build, fly, break, learn, repeat.</b> SpaceX tests real hardware early and accepts failures as data. It is the opposite of “perfect on paper first”.</div>
+  <aside class="notes"><ul><li>Starhopper looked like a water tower. It is now a monument at Starbase [26].</li><li>The SN8 belly-flop landing (falling sideways, then flipping upright) is still how Starship lands today.</li><li>Ask: is failing in public brave or reckless? (Note: the FAA investigated SN8 because it flew despite a launch-license concern [27].)</li></ul></aside>
+</section>
+<section class="slide" id="flights" data-section="Timeline">
+  <p class="kicker b">Development timeline · part 2</p>
+  <h2>14 full-stack flights (Apr 2023 – Sep 2026)</h2>
+  <div class="flights"><div class="fl bad" style="--i:0"><span class="v">V1</span><div class="n">F1</div><div class="d">Apr 20, 2023</div>Lost before stage separation</div><div class="fl bad" style="--i:1"><span class="v">V1</span><div class="n">F2</div><div class="d">Nov 18, 2023</div>First hot staging; both stages lost later</div><div class="fl ok" style="--i:2"><span class="v">V1</span><div class="n">F3</div><div class="d">Mar 14, 2024</div>Reached space; ship lost on re-entry</div><div class="fl ok" style="--i:3"><span class="v">V1</span><div class="n">F4</div><div class="d">Jun 6, 2024</div>Both stages make soft splashdowns</div><div class="fl star" style="--i:4"><span class="v">V1</span><div class="n">F5</div><div class="d">Oct 13, 2024</div>★ First booster catch by the tower</div><div class="fl ok" style="--i:5"><span class="v">V1</span><div class="n">F6</div><div class="d">Nov 19, 2024</div>Booster diverted to Gulf; ship on target</div><div class="fl bad" style="--i:6"><span class="v">V2</span><div class="n">F7</div><div class="d">Jan 16, 2025</div>V2 debut: ship lost; booster caught</div><div class="fl bad" style="--i:7"><span class="v">V2</span><div class="n">F8</div><div class="d">Mar 6, 2025</div>Ship lost again; booster caught</div><div class="fl bad" style="--i:8"><span class="v">V2</span><div class="n">F9</div><div class="d">May 27, 2025</div>First reused booster; ship lost control</div><div class="fl ok" style="--i:9"><span class="v">V2</span><div class="n">F10</div><div class="d">Aug 26, 2025</div>Deploys 8 Starlink simulators; on-target splashdown</div><div class="fl ok" style="--i:10"><span class="v">V2</span><div class="n">F11</div><div class="d">Oct 13, 2025</div>Clean V2 finale; last flight from Pad 1</div><div class="fl part" style="--i:11"><span class="v">V3</span><div class="n">F12</div><div class="d">May 22, 2026</div>V3 &amp; Pad 2 debut; ship splashes down, booster lost</div><div class="fl part" style="--i:12"><span class="v">V3</span><div class="n">F13</div><div class="d">Jul 24, 2026</div>First real Starlink V3s (20, suborbital); booster hard splashdown</div><div class="fl star" style="--i:13"><span class="v">V3</span><div class="n">F14</div><div class="d">Sep 28, 2026</div>★ First orbit · 26 Starlink V3 deployed</div></div>
+  <p class="legend"><i style="background:var(--green)"></i>success <i style="background:var(--gold)"></i>success, booster lost <i style="background:var(--red)"></i>failure <i style="background:var(--fire)"></i>milestone · V1/V2/V3 = vehicle version. Outcomes follow the launch-outcome column of [25], checked against SpaceX [2][3][4].</p>
+  <div class="cards c4">
+    <div class="card anim"><div class="num">3</div><div class="lbl">Booster catches</div><p>Flights 5, 7 and 8 [25].</p></div>
+    <div class="card b anim"><div class="num">0</div><div class="lbl">Ship catches so far</div><p>Catching the ship is still a goal SpaceX lists as a key milestone [12].</p></div>
+    <div class="card g anim"><div class="num">Jun 18<small>2025</small></div><div class="lbl">Ship 36 explodes</div><p>Lost on a ground test stand before Flight 10 [27].</p></div>
+    <div class="card gr anim"><div class="num">75<small>days</small></div><div class="lbl">Ship 40 at sea</div><p>The Flight 13 ship survived splashdown and returned to Texas in Oct. 2026 after 75 days at sea [7].</p></div>
+  </div>
+  <aside class="notes"><ul><li>Move left to right: V1 learned to fly, V2 struggled and then recovered, V3 reached orbit.</li><li>2025 was tough: three ship losses in a row (Flights 7–9) plus the Ship 36 ground explosion. Then Flights 10 and 11 were clean.</li><li>Flight 12 (V3 debut) went well for the ship, but the booster crashed, so the FAA required a mishap investigation [10].</li></ul></aside>
+</section>
+<section class="slide" id="orbit" data-section="Latest: first orbit ★">
+  <div class="two vid">
+    <div>
+      <p class="kicker">2026 · Version 3 · Starbase</p>
+      <h2>Flight 14: <span class="fire">Starship reaches orbit</span></h2>
+      <ul class="pts">
+        <li class="anim"><b>Sep. 28, 2026, 7:48 a.m. CT</b> from Pad 2 at Starbase, Texas: Ship 41 on Booster 21 [2][25].</li>
+        <li class="anim">Ship 41 lost one engine on the way up but still reached orbit (about 262 × 275 km) and deployed all <b>26 Starlink V3</b> satellites. All 26 made contact [2][11][25].</li>
+        <li class="anim">Out of caution, SpaceX made its <b>first deorbit burn</b> early and splashed down on target north of Hawaii about 3 hours after launch, instead of after the planned ~10 hours [2][5].</li>
+        <li class="anim">The booster made a controlled splashdown in the Gulf. [2][11].</li>
+        <li class="anim"><b>Next:</b> Flight 15 (Ship 42, Booster 22) is listed as <b>no earlier than Nov. 8</b> in planning documents. Flight 16 is slated to be the first from LC-39A in Florida [7][29].</li>
+      </ul>
+      <p class="src">Starbase became an official Texas city by vote on May 3, 2025 [28]. Pad 2 debuted on Flight 12 [4].</p>
+    </div>
+    <figure class="video vwrap anim"><div class="vframe" style="background-image:url('https://i.ytimg.com/vi/oHnT9VOthb8/hqdefault.jpg')"><iframe data-src="https://www.youtube-nocookie.com/embed/oHnT9VOthb8?rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;modestbranding=1" title="Starship Flight 14 Reaches Orbit—but Returns Early | Starship Update (NASASpaceflight)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption><span>🎬 <b>Starship Flight 14 Reaches Orbit—but Returns Early | Starship Update</b> · NASASpaceflight [V3]</span><a class="ytlink" href="https://www.youtube.com/watch?v=oHnT9VOthb8" target="_blank" rel="noopener">▶ Watch on YouTube</a></figcaption></figure>
+  </div>
+  <aside class="notes"><ul><li>Flight 14 is the newest flight as of Oct. 10, 2026. SpaceX calls it the first flight to deliver meaningful payload to orbit [2].</li><li>Analysts were "largely satisfied" despite the engine issue (SpaceNews, Oct. 2) [6].</li><li>The Flight 15 date comes from a planning slide, not an official SpaceX announcement. Treat it as tentative.</li></ul></aside>
+</section>
+<section class="slide" id="roadmap" data-section="Timelines ahead">
+  <p class="kicker b">Timelines ahead · status on Oct. 10, 2026</p>
+  <h2>What's officially planned, and what has slipped</h2>
+  <table class="road"><thead><tr><th>Milestone</th><th>What the sources say</th><th>Status</th></tr></thead><tbody><tr><td>Starlink V3 deployment</td><td>Began on Flight 14 (26 sats). Up to 60 per launch planned; Musk hopes for about 1,000 V3s by roughly Q2 2027 [2][12][20]</td><td><span class="tag ok">Under way</span></td></tr><tr><td>Ship catch by the tower</td><td>Listed by SpaceX as a key upcoming milestone; not yet attempted [12]</td><td><span class="tag tgt">Goal · no date</span></td></tr><tr><td>Ship-to-ship propellant transfer demo</td><td>Planned for Mar. 2025, then Mar. 2026 (NASA OIG); still not scheduled as of Sep. 2026 [16][31]</td><td><span class="tag slip">Slipped</span></td></tr><tr><td>Starlink V2 Mobile (direct-to-cell)</td><td>Satellites to start flying on Starship in 2027, with service by the end of 2027 (Shotwell) [12][20]</td><td><span class="tag tgt">Target 2027</span></td></tr><tr><td>Uncrewed Starship lunar landing</td><td>Musk: targeting Mar. 2027 after shifting priority to the Moon (Feb. 2026) [18]</td><td><span class="tag asp">Company aim</span></td></tr><tr><td>Artemis III (NASA)</td><td>Crewed Orion docks with lander test articles in <b>Earth orbit</b>, 2027. NASA chief: about 90 days behind (Sep. 2026) [14][15][17]</td><td><span class="tag tgt">Target 2027</span></td></tr><tr><td>Artemis IV: first crewed landing</td><td>Starship HLS lands astronauts near the lunar south pole, early 2028. The first landing was once planned for Artemis III [13][14][30]</td><td><span class="tag slip">Target 2028 (moved)</span></td></tr><tr><td>Moon &amp; Mars cargo / Mars crews</td><td>Uncrewed Mars flights for the late-2026 window were put on hold. Paid cargo to the Moon and Mars from 2028 at the earliest. No official date for crewed Mars [1][18]</td><td><span class="tag slip">2026 dropped · NET 2028</span></td></tr></tbody></table>
+  <p class="legend"><span class="tag ok">Under way</span> happening now · <span class="tag tgt">Target</span> official SpaceX or NASA date · <span class="tag asp">Company aim</span> stated by SpaceX leadership · <span class="tag slip">Slipped</span> an earlier date was missed or moved</p>
+  <aside class="notes"><ul><li>Rocket schedules slip; that is normal. The honest way to read this table is "target" vs "done".</li><li>NASA's Feb. 2026 plan turned Artemis III into an Earth-orbit test (like Apollo 9) and kept the first landing in 2028, on Artemis IV [14].</li><li>Mars: SpaceX had aimed at the late-2026 Mars window. In Feb. 2026, Musk said the focus would move to a "self-growing city" on the Moon [18].</li></ul></aside>
+</section>
+<section class="slide" id="hls" data-section="Moon: HLS">
+  <div class="two vid">
+    <div>
+      <p class="kicker">Lunar logistics · NASA Artemis</p>
+      <h2>Starship HLS: the Moon lander</h2>
+      <ul class="pts">
+        <li class="anim">In 2021, NASA picked a crewed version of Starship as its <b>Human Landing System</b>. The first contract was <b>$2.9 billion</b> [30].</li>
+        <li class="anim">Plan: tankers fill a depot ship in Earth orbit → HLS refills → flies to lunar orbit → astronauts move over from Orion and land [31].</li>
+        <li class="anim">NASA's Artemis III (2027) will test the docking with Orion in Earth orbit before Artemis IV tries to land in 2028 [15].</li>
+      </ul>
+      <figure class="photo wide anim"><img src="assets/photos/hls-test-article.jpg" alt="Artist&#x27;s concept of Orion docked with the Starship HLS test article in Earth orbit" loading="lazy"><figcaption>NASA/SpaceX artist's concept (not a photo): Orion and the Starship HLS test article for Artemis III · Photo: NASA/SpaceX · Public domain · Wikimedia Commons</figcaption></figure>
+    </div>
+    <figure class="video vwrap anim"><div class="vframe" style="background-image:url('https://i.ytimg.com/vi/RLllkvQy09s/hqdefault.jpg')"><iframe data-src="https://www.youtube-nocookie.com/embed/RLllkvQy09s?rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;modestbranding=1" title="MOON MINUTE: Artemis III Starship Human Landing System (NASA&#x27;s Kennedy Space Center)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption><span>🎬 <b>MOON MINUTE: Artemis III Starship Human Landing System</b> · NASA&#x27;s Kennedy Space Center [V4]</span><a class="ytlink" href="https://www.youtube.com/watch?v=RLllkvQy09s" target="_blank" rel="noopener">▶ Watch on YouTube</a></figcaption></figure>
+  </div>
+  <aside class="notes"><ul><li>The image is an official NASA/SpaceX artist's concept (public domain), not AI art and not a photo.</li><li>The NASA video (2 years old) shows the original landing plan for Artemis III. Since Feb. 2026 the landing is planned for Artemis IV [14].</li></ul></aside>
+</section>
+<section class="slide" id="starlink" data-section="Businesses">
+  <p class="kicker">Business #1 · the money engine</p>
+  <h2>Starlink V3 and phones that talk to space</h2>
+  <div class="cards">
+    <div class="card anim"><div class="num">1<small>Tbps</small></div><div class="lbl">Downlink per V3 satellite</div><p>About 10× a V2 Mini (96 Gbps). Too big for Falcon 9, so V3 needs Starship [12][20].</p></div>
+    <div class="card anim"><div class="num">60</div><div class="lbl">V3 sats per launch (planned)</div><p>SpaceX says about 20× the downlink added per Falcon 9 launch [12].</p></div>
+    <div class="card b anim"><div class="num">10.3<small>M</small></div><div class="lbl">Starlink subscribers</div><p>In 164 countries and territories, as of Mar. 31, 2026 [12].</p></div>
+    <div class="card b anim"><div class="num">2027</div><div class="lbl">V2 Mobile (direct-to-cell)</div><p>5G-class phone service from space, using spectrum bought from EchoStar [12][20].</p></div>
+    <div class="card g anim"><div class="num">$11.4<small>B</small></div><div class="lbl">Connectivity revenue, 2025</div><p>SpaceX's largest segment by far [12].</p></div>
+    <div class="card g anim"><div class="num">$1.6<small>T</small></div><div class="lbl">Market size (SpaceX's estimate)</div><p>$870B broadband + $740B mobile. This is the company's own claim, not an independent figure [12].</p></div>
+  </div>
+  <p class="src">Sources: SpaceX S-1 filed with the SEC, May 2026 [12]; ISPreview report on the Aug. 4, 2026 investor call [20].</p>
+  <aside class="notes"><ul><li>Starlink pays the bills: it is why Starship's first real job is launching satellites.</li><li>Market-size numbers are SpaceX's own, from its IPO filing. Investors are told to treat them as estimates.</li></ul></aside>
+</section>
+<section class="slide" id="business" data-section="Businesses">
+  <p class="kicker">Businesses built on Starship · part 1</p>
+  <h2>Moon cargo, stations and super-fast travel</h2>
+  <div class="biz"><div class="card anim"><div class="ico">🌙</div><h3>Lunar logistics</h3><p>NASA HLS contract; SpaceX lists paid Moon cargo from 2028 at the earliest, at <b>$100M per metric ton</b> [1][30].</p><span class="tag tgt">Contracted</span></div><div class="card anim"><div class="ico">🛰️</div><h3>Space stations</h3><p>Voyager's <b>Starlab</b> is designed to launch fully outfitted on a <b>single Starship</b> before the ISS retires [23].</p><span class="tag tgt">Contracted</span></div><div class="card anim"><div class="ico">✈️</div><h3>Point-to-point travel</h3><p>“Anywhere in the world in one hour or less”: a long-term idea in SpaceX's plans. No date or price yet [1][12].</p><span class="tag asp">Vision</span></div><div class="card anim"><div class="ico">🪖</div><h3>Rocket Cargo (USAF/USSF)</h3><p>AFRL's 5-year, <b>$102M</b> study contract (2022). The program is being phased down as the focus shifts to smaller re-entry pods [21][22].</p><span class="tag slip">Scaled back</span></div></div>
+  <div class="pair" style="margin-top:1vw"><figure class="photo wide glow anim" data-ai-slot="orbital-station"><span class="ai-badge ph" data-ai-label>Concept illustration · not a photo</span><img src="assets/concepts/orbital-station.svg" alt="Concept: a Starship approaching a large ring-shaped commercial space station above Earth" loading="lazy" width="1600" height="900"><figcaption>Concept: a commercial station in low Earth orbit · <span data-ai-credit>Concept illustration drawn by Kita for this deck; it depicts a future idea, not a real event.</span></figcaption></figure><figure class="photo wide glow anim" data-ai-slot="p2p-platform"><span class="ai-badge ph" data-ai-label>Concept illustration · not a photo</span><img src="assets/concepts/p2p-platform.svg" alt="Concept: a Starship lifting off from an offshore launch platform near a coastal city at dusk" loading="lazy" width="1600" height="900"><figcaption>Concept: point-to-point travel from an offshore spaceport · <span data-ai-credit>Concept illustration drawn by Kita for this deck; it depicts a future idea, not a real event.</span></figcaption></figure></div>
+  <aside class="notes"><ul><li>Separate the contracted ideas (real money: HLS, Starlab) from the visions (point-to-point travel).</li><li>Rocket Cargo still exists, but the military now favors smaller re-entry capsules [22].</li><li>Both images are concept illustrations of future ideas, not real places or real designs.</li></ul></aside>
+</section>
+<section class="slide" id="business-2" data-section="Businesses">
+  <p class="kicker">Businesses built on Starship · part 2</p>
+  <h2>Data centers in orbit, tourists and Mars</h2>
+  <div class="biz"><div class="card anim"><div class="ico">🧠</div><h3>Orbital data centers</h3><p>Solar-powered AI compute satellites, “as early as 2028” per SpaceX. It also warns they may not be commercially viable [12][19].</p><span class="tag asp">Early concept</span></div><div class="card anim"><div class="ico">🏭</div><h3>In-space manufacturing</h3><p>SpaceX lists it as a future market. Its own filing says the industry “does not exist today” [12].</p><span class="tag asp">Future</span></div><div class="card anim"><div class="ico">🎟️</div><h3>Space tourism</h3><p>dearMoon, the private Starship trip around the Moon, was <b>cancelled</b> on June 1, 2024 over schedule uncertainty [24].</p><span class="tag slip">dearMoon cancelled</span></div><div class="card anim"><div class="ico">🔴</div><h3>Mars settlement</h3><p>The original reason for Starship. Paid Mars cargo from 2028 at the earliest; the Moon comes first for now [1][18].</p><span class="tag asp">Long-term</span></div></div>
+  <div class="cards c2" style="margin-top:1vw">
+    <div class="card g anim"><div class="lbl">SpaceX's own market estimate for “Space”</div><div class="num">$370<small>B</small></div><p>Space-enabled solutions, on top of $1.6T for connectivity. This is an issuer claim in an IPO filing, not an independent estimate, and the filing warns such estimates “may prove to be inaccurate” [12].</p></div>
+    <div class="card anim"><div class="lbl">What the filing admits</div><div class="num" style="font-size:1.6rem">“do not exist today”</div><p>In-orbit manufacturing, passenger flights to Mars, and asteroid mining are listed as industries that do not exist yet [12].</p></div>
+  </div>
+  <aside class="notes"><ul><li>Be accurate: dearMoon was cancelled in June 2024 [24]. Tourism is still listed as a future market [12].</li><li>Orbital data centers: SpaceX itself warns they are unproven [19].</li><li>Discussion: which of these eight businesses will become real first?</li></ul></aside>
+</section>
+<section class="slide" id="refill" data-section="The future">
+  <div class="two img">
+    <figure class="photo cine glow anim" data-ai-slot="refill"><span class="ai-badge ph" data-ai-label>Concept illustration · not a photo</span><img src="assets/concepts/refill.svg" alt="Concept: two Starships docked tail-to-tail in low Earth orbit, transferring propellant above Earth" loading="lazy" width="1600" height="900"><figcaption>Concept: ship-to-ship propellant transfer in low Earth orbit · <span data-ai-credit>Concept illustration drawn by Kita for this deck; it depicts a future idea, not a real event.</span></figcaption></figure>
+    <div>
+      <p class="kicker g">The key that unlocks everything</p>
+      <h2>Filling up in orbit</h2>
+      <ul class="pts">
+        <li class="anim">Two ships launch about <b>3–4 weeks apart</b>. A tanker docks with a target ship, and a <b>pressure difference</b> pushes propellant across, with no pumps needed [30].</li>
+        <li class="anim">The hard parts: keeping super-cold liquids from boiling off, and settling the fluid in zero-g with small thrusters [12][30].</li>
+        <li class="anim">V3 ships carry refueling hardware such as docking ports [27].</li>
+        <li class="anim">Without refilling, there is no Moon landing and no Mars trip. With it, a ship can carry “hundreds of tonnes of cargo” to Mars [1].</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes"><ul><li>Analogy: aerial refueling of jets, but with liquids at around −180 °C and no gravity to pull them into the pipe.</li><li>The demo was once planned for 2025. As of Oct. 2026, it has not been scheduled.</li></ul></aside>
+</section>
+<section class="slide" id="vision" data-section="The future">
+  <p class="kicker g">The future vision</p>
+  <h2>A Moon base, then a <span class="fire">city on Mars</span></h2>
+  <div class="pair">
+    <figure class="photo cine glow anim" data-ai-slot="lunar-base"><span class="ai-badge ph" data-ai-label>Concept illustration · not a photo</span><img src="assets/concepts/lunar-base.svg" alt="Concept: a white HLS Starship standing beside habitat modules at a lunar base, Earth in the sky" loading="lazy" width="1600" height="900"><figcaption>Concept: an HLS Starship at a lunar south-pole base · <span data-ai-credit>Concept illustration drawn by Kita for this deck; it depicts a future idea, not a real event.</span></figcaption></figure>
+    <figure class="photo cine glow anim" data-ai-slot="mars-city"><span class="ai-badge ph" data-ai-label>Concept illustration · not a photo</span><img src="assets/concepts/mars-city.svg" alt="Concept: a settlement of domes and Starships on Mars at a blue Martian sunset" loading="lazy" width="1600" height="900"><figcaption>Concept: a future Mars city at sunset · <span data-ai-credit>Concept illustration drawn by Kita for this deck; it depicts a future idea, not a real event.</span></figcaption></figure>
+  </div>
+  <div class="cards c4" style="margin-top:1em">
+    <div class="card anim"><h3>Moon first</h3><p>In Feb. 2026, Musk said a “self-growing city” on the Moon could come sooner than one on Mars [18].</p></div>
+    <div class="card anim"><h3>Starfactory</h3><p>Sized to build up to <b>1,000 Starships a year</b> for Mars transfer windows [1].</p></div>
+    <div class="card b anim"><h3>Up to 100 people</h3><p>Per ship on long interplanetary flights, in SpaceX's design goal [1].</p></div>
+    <div class="card g anim"><h3>Make fuel there</h3><p>Methane plus oxygen can be made on Mars (Sabatier), so ships can refuel for the trip home [27].</p></div>
+  </div>
+  <aside class="notes"><ul><li>These are visions, not schedules. Mars windows open about every 26 months.</li><li>Discussion: what would you need to build first on the Moon: power, water, or shelter?</li></ul></aside>
+</section>
+<section class="slide" id="vision-video" data-section="The future">
+  <div class="two vid">
+    <div>
+      <p class="kicker g">Inspiring vision · animation</p>
+      <h2>“Making Life Multi-Planetary”</h2>
+      <p class="lead anim">A short official SpaceX film about its biggest goal: making humanity a multi-planet species.</p>
+      <div class="callout anim">🎯 While you watch, look for the ideas from this deck: <b>reuse, refilling, and landing on other worlds</b>.</div>
+      <p class="src">A vision film. Any animated scenes show plans, not real events.</p>
+    </div>
+    <figure class="video vwrap anim"><div class="vframe" style="background-image:url('https://i.ytimg.com/vi/T43sbhCKvBY/hqdefault.jpg')"><iframe data-src="https://www.youtube-nocookie.com/embed/T43sbhCKvBY?rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;modestbranding=1" title="Making Life Multi-Planetary (SpaceX)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><figcaption><span>🎬 <b>Making Life Multi-Planetary</b> · SpaceX [V5]</span><a class="ytlink" href="https://www.youtube.com/watch?v=T43sbhCKvBY" target="_blank" rel="noopener">▶ Watch on YouTube</a></figcaption></figure>
+  </div>
+  <aside class="notes"><ul><li>About 1.5 minutes long, so play it in full.</li><li>Then ask: which step is hardest? (Most engineers would say refilling or landing on Mars.)</li></ul></aside>
+</section>
+<section class="slide has-hero" id="closing" data-section="Closing">
+  <div class="hero"><img src="assets/photos/flight11-liftoff.jpg" alt="" aria-hidden="true"></div>
+  <div class="title-wrap">
+    <p class="kicker anim">From 150 metres to orbit in seven years</p>
+    <p class="quote anim">“…to make life multiplanetary, to understand the true nature of the universe, and to extend the light of consciousness to the stars.”<span class="by">SpaceX mission statement, from its 2026 SEC filing [12]</span></p>
+    <div class="qs">
+      <div class="card anim"><h3>💭 Think</h3><p>Which failure in this story taught the most?</p></div>
+      <div class="card b anim"><h3>🛠️ Build</h3><p>Design one thing you would send to a Moon base on the first cargo Starship.</p></div>
+      <div class="card g anim"><h3>🚀 Dream</h3><p>If launch got 100× cheaper, what new job would exist in 2040?</p></div>
+    </div>
+  </div>
+  <span class="hero-credit">Flight 11 liftoff, Oct. 13, 2025 · Photo: Shujianyang · CC BY-SA 4.0 · Wikimedia Commons</span>
+  <aside class="notes"><ul><li>Close on the idea that big things are built by iterating: Starhopper (2019) → SN15 landing (2021) → booster catch (2024) → orbit (2026).</li><li>Pick one of the three prompts for an exit ticket.</li></ul></aside>
+</section>
+<section class="slide" id="sources" data-section="Sources">
+  <p class="kicker">Sources &amp; credits · facts checked Oct. 10, 2026</p>
+  <h2 style="font-size:1.6rem">Sources</h2>
+  <ol class="srcs"><li>SpaceX: Starship vehicle page (specs, Moon/Mars cargo, Starfactory). <a href="https://www.spacex.com/vehicles/starship" target="_blank" rel="noopener">https://www.spacex.com/vehicles/starship</a></li><li>SpaceX: Starship Flight 14. <a href="https://www.spacex.com/launches/starship-flight-14" target="_blank" rel="noopener">https://www.spacex.com/launches/starship-flight-14</a></li><li>SpaceX: Starship&#x27;s Thirteenth Flight Test. <a href="https://www.spacex.com/launches/starship-flight-13" target="_blank" rel="noopener">https://www.spacex.com/launches/starship-flight-13</a></li><li>SpaceX: Starship&#x27;s Twelfth Flight Test. <a href="https://www.spacex.com/launches/starship-flight-12" target="_blank" rel="noopener">https://www.spacex.com/launches/starship-flight-12</a></li><li>Ars Technica, Sep 28 2026: Starship goes orbital, deploying first next-gen Starlinks. <a href="https://arstechnica.com/space/2026/09/starships-first-orbital-launch-gives-lift-to-spacexs-next-gen-starlinks/" target="_blank" rel="noopener">https://arstechnica.com/space/2026/09/starships-first-orbital-launch-gives-lift-to-spacexs-next-gen-starlinks/</a></li><li>SpaceNews, Oct 2 2026: SpaceX, analysts satisfied with latest Starship flight. <a href="https://spacenews.com/spacex-analysts-satisfied-with-latest-starship-flight/" target="_blank" rel="noopener">https://spacenews.com/spacex-analysts-satisfied-with-latest-starship-flight/</a></li><li>NASASpaceflight, Oct 9 2026: Ship 40 returns home as Ship 42 gets more cryo testing. <a href="https://www.nasaspaceflight.com/2026/10/ship-40-returns-ship-42-more-testing/" target="_blank" rel="noopener">https://www.nasaspaceflight.com/2026/10/ship-40-returns-ship-42-more-testing/</a></li><li>NASASpaceflight, Jul 2026: Starship Flight 13 achieves new firsts. <a href="https://www.nasaspaceflight.com/2026/07/starship-flight-13-flight/" target="_blank" rel="noopener">https://www.nasaspaceflight.com/2026/07/starship-flight-13-flight/</a></li><li>NASASpaceflight, May 2026: Following Starship V3 debut, SpaceX prepares for follow up. <a href="https://www.nasaspaceflight.com/2026/05/starship-flight-12-v3-follow/" target="_blank" rel="noopener">https://www.nasaspaceflight.com/2026/05/starship-flight-12-v3-follow/</a></li><li>Spaceflight Now, May 27 2026: FAA requires SpaceX-led mishap investigation. <a href="https://spaceflightnow.com/2026/05/27/faa-requires-spacex-led-mishap-investigation-before-resumption-of-starship-launches/" target="_blank" rel="noopener">https://spaceflightnow.com/2026/05/27/faa-requires-spacex-led-mishap-investigation-before-resumption-of-starship-launches/</a></li><li>Payload, Sep 28 2026: Starship reaches orbit on 14th test flight. <a href="https://payloadspace.com/starship-reaches-orbit-on-14th-test-flight/" target="_blank" rel="noopener">https://payloadspace.com/starship-reaches-orbit-on-14th-test-flight/</a></li><li>SpaceX Form S-1, SEC, May 2026 (cost per kg, V3, Starlink, markets, risks). <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm</a></li><li>NASA: Artemis program page. <a href="https://www.nasa.gov/humans-in-space/artemis/" target="_blank" rel="noopener">https://www.nasa.gov/humans-in-space/artemis/</a></li><li>NASA, Feb 2026: NASA adds mission to Artemis, updates architecture. <a href="https://www.nasa.gov/news-release/nasa-adds-mission-to-artemis-lunar-program-updates-architecture/" target="_blank" rel="noopener">https://www.nasa.gov/news-release/nasa-adds-mission-to-artemis-lunar-program-updates-architecture/</a></li><li>NASA: NASA marches toward Artemis III in 2027, names crew. <a href="https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members/" target="_blank" rel="noopener">https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members/</a></li><li>NASA OIG, Mar 10 2026: Management of the HLS contracts (IG-26-004). <a href="https://oig.nasa.gov/audits/nasas-management-of-the-human-landing-system-contracts/" target="_blank" rel="noopener">https://oig.nasa.gov/audits/nasas-management-of-the-human-landing-system-contracts/</a></li><li>Talk of Titusville, Sep 25 2026: Isaacman memo, Artemis III ~90 days behind. <a href="https://talkoftitusville.com/2026/09/25/jared-isaacman-artemis-iii-is-around-90-days-behind-schedule/" target="_blank" rel="noopener">https://talkoftitusville.com/2026/09/25/jared-isaacman-artemis-iii-is-around-90-days-behind-schedule/</a></li><li>Reuters, Feb 8 2026: SpaceX prioritizes lunar &#x27;self-growing city&#x27; over Mars. <a href="https://www.reuters.com/science/musk-says-spacex-prioritise-building-self-growing-city-moon-2026-02-08/" target="_blank" rel="noopener">https://www.reuters.com/science/musk-says-spacex-prioritise-building-self-growing-city-moon-2026-02-08/</a></li><li>Reuters, Apr 21 2026: SpaceX says AI space data centers may not be commercially viable. <a href="https://www.reuters.com/world/spacex-says-unproven-ai-space-data-centers-may-not-be-commercially-viable-filing-2026-04-21/" target="_blank" rel="noopener">https://www.reuters.com/world/spacex-says-unproven-ai-space-data-centers-may-not-be-commercially-viable-filing-2026-04-21/</a></li><li>ISPreview, Aug 5 2026: SpaceX updates on Starlink V3 and V2 Mobile plans. <a href="https://www.ispreview.co.uk/index.php/2026/08/spacex-updates-on-starlinks-v3-broadband-and-v2-mobile-satellite-plans.html" target="_blank" rel="noopener">https://www.ispreview.co.uk/index.php/2026/08/spacex-updates-on-starlinks-v3-broadband-and-v2-mobile-satellite-plans.html</a></li><li>SpaceNews, Jan 2022: SpaceX wins $102M Air Force Rocket Cargo contract. <a href="https://spacenews.com/spacex-wins-102-million-air-force-contract-to-demonstrate-technologies-for-point-to-point-space-transportation/" target="_blank" rel="noopener">https://spacenews.com/spacex-wins-102-million-air-force-contract-to-demonstrate-technologies-for-point-to-point-space-transportation/</a></li><li>Breaking Defense, Sep 23 2026: Air, Space Forces pick up pace for orbital cargo delivery. <a href="https://breakingdefense.com/2026/09/air-space-forces-pick-up-research-pace-for-orbital-cargo-delivery/" target="_blank" rel="noopener">https://breakingdefense.com/2026/09/air-space-forces-pick-up-research-pace-for-orbital-cargo-delivery/</a></li><li>Voyager: Starlab space station. <a href="https://voyagertechnologies.com/starlab/" target="_blank" rel="noopener">https://voyagertechnologies.com/starlab/</a></li><li>Reuters, Jun 1 2024: Maezawa cancels dearMoon flyby. <a href="https://www.reuters.com/technology/space/japanese-billionaire-maezawa-dearmoon-mission-cancels-moon-flyby-2024-06-01/" target="_blank" rel="noopener">https://www.reuters.com/technology/space/japanese-billionaire-maezawa-dearmoon-mission-cancels-moon-flyby-2024-06-01/</a></li><li>Wikipedia: List of Starship launches (flight dates and outcomes). <a href="https://en.wikipedia.org/wiki/List_of_Starship_launches" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/List_of_Starship_launches</a></li><li>Wikipedia: List of Starship vehicles (Starhopper, SN8, SN15). <a href="https://en.wikipedia.org/wiki/List_of_Starship_vehicles" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/List_of_Starship_vehicles</a></li><li>Wikipedia: SpaceX Starship (design, materials, history). <a href="https://en.wikipedia.org/wiki/SpaceX_Starship" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/SpaceX_Starship</a></li><li>Wikipedia: SpaceX Starbase (city incorporation). <a href="https://en.wikipedia.org/wiki/SpaceX_Starbase" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/SpaceX_Starbase</a></li><li>Wikipedia: Starship flight 15. <a href="https://en.wikipedia.org/wiki/Starship_flight_15" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Starship_flight_15</a></li><li>Ars Technica, Apr 2024: NASA lays out how SpaceX will refuel Starships. <a href="https://arstechnica.com/space/2024/04/nasa-exploration-chief-lays-out-next-steps-for-starship-development/" target="_blank" rel="noopener">https://arstechnica.com/space/2024/04/nasa-exploration-chief-lays-out-next-steps-for-starship-development/</a></li><li>Wikipedia: Starship Propellant Transfer Demonstration. <a href="https://en.wikipedia.org/wiki/Starship_Propellant_Transfer_Demonstration" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Starship_Propellant_Transfer_Demonstration</a></li></ol>
+  <div class="credits">
+    <div><h3>🎬 Videos (embedded via youtube-nocookie)</h3>[V1] SpaceX: “Starship&#x27;s Fifth Flight Test”. <a href="https://www.youtube.com/watch?v=hI9HQfCAw64" target="_blank" rel="noopener">youtu.be/hI9HQfCAw64</a><br>[V2] Everyday Astronaut: “Is SpaceX&#x27;s Raptor engine the king of rocket engines?”. <a href="https://www.youtube.com/watch?v=LbH1ZDImaI8" target="_blank" rel="noopener">youtu.be/LbH1ZDImaI8</a><br>[V3] NASASpaceflight: “Starship Flight 14 Reaches Orbit—but Returns Early | Starship Update”. <a href="https://www.youtube.com/watch?v=oHnT9VOthb8" target="_blank" rel="noopener">youtu.be/oHnT9VOthb8</a><br>[V4] NASA&#x27;s Kennedy Space Center: “MOON MINUTE: Artemis III Starship Human Landing System”. <a href="https://www.youtube.com/watch?v=RLllkvQy09s" target="_blank" rel="noopener">youtu.be/RLllkvQy09s</a><br>[V5] SpaceX: “Making Life Multi-Planetary”. <a href="https://www.youtube.com/watch?v=T43sbhCKvBY" target="_blank" rel="noopener">youtu.be/T43sbhCKvBY</a><br></div>
+    <div><h3>📷 Real photos (Wikimedia Commons)</h3>Flight 5 liftoff: Steve Jurvetson, CC BY 2.0. <a href="https://commons.wikimedia.org/wiki/File:Liftoff_of_SpaceX_IFT-5_(54064037095).jpg" target="_blank" rel="noopener">File page</a><br>Booster approach: Steve Jurvetson, CC BY 2.0. <a href="https://commons.wikimedia.org/wiki/File:Starship_Booster_Return_on_Final_Approach_(54063904149)_(cropped).jpg" target="_blank" rel="noopener">File page</a><br>Booster catch: Steve Jurvetson, CC BY 2.0. <a href="https://commons.wikimedia.org/wiki/File:Starship_Booster_Landing_on_Mechzilla_(54064036815).jpg" target="_blank" rel="noopener">File page</a><br>Ship 39 (US government work): Petty Officer 1st Class Alexander Kubitza, Public domain. <a href="https://commons.wikimedia.org/wiki/File:Ship_39_in_Megabay_2,_Boca_Chica_TX.jpg" target="_blank" rel="noopener">File page</a><br>Starhopper: Nomadd from forum.nasaspaceflight.com, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:SpaceX_Starhopper.jpg" target="_blank" rel="noopener">File page</a><br>SN8 launch: Forest Katsch, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:SpaceX_Starship_SN8_launch_as_viewed_from_South_Padre_Island.jpg" target="_blank" rel="noopener">File page</a><br>Flight 11 liftoff: Shujianyang, CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:Starship_lifted_off_from_Starbase_during_flight_test_11.jpg" target="_blank" rel="noopener">File page</a><br>HLS test-article concept (NASA/SpaceX): NASA/SpaceX, Public domain. <a href="https://commons.wikimedia.org/wiki/File:Artist%E2%80%99s_Concepts_Depict_SpaceX%E2%80%99s_Starship_HLS_Test_Article_for_NASA%E2%80%99s_Artemis_III.jpg" target="_blank" rel="noopener">File page</a><br>Photos were resized for the web.</div>
+    <div><h3>🎨 Concept images</h3><span data-ai-credits>The images marked “Concept illustration” were drawn by Kita for this deck. They show future ideas, not real events or real SpaceX designs.</span><br><br>Charts and diagrams were made by Kita from the figures in the sources. The Starship cost bar is a goal, not a price. SpaceX, Starship, Starlink and NASA names belong to their owners; this deck uses no logos.</div>
+  </div>
+  <aside class="notes"><ul><li>All URLs were checked on Oct. 10, 2026. Wikipedia was used for dates and cross-checked against SpaceX and news reports.</li></ul></aside>
+</section>
+
+</main>
+
+<div class="progress" id="progress" style="width:0"></div>
+<nav class="nav" aria-label="Slide navigation">
+  <button type="button" class="nbtn ghost" id="prev" aria-label="Previous slide">← Prev</button>
+  <span class="counter" id="counter" aria-live="polite">1 / 20</span>
+  <button type="button" class="nbtn" id="next" aria-label="Next slide">Next →</button>
+</nav>
+<aside class="npanel" id="npanel" hidden aria-label="Speaker notes"><h4><span>Speaker notes · <span id="nslide"></span></span><button type="button" class="tbtn" id="nclose" aria-label="Close notes">✕</button></h4><div id="nbody"></div></aside>
+<footer class="foot"><span class="dot"></span>Made by<b>Kita</b></footer>
+<script src="deck.js"></script>
+</body>
+</html>
